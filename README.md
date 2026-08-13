@@ -207,7 +207,7 @@ car-sales-analysis/
 └── README.md
 
 
-Reproducibility
+## Reproducibility
 
 The main data preparation workflow is documented in:
 
@@ -241,7 +241,7 @@ Visualisation
         ↓
 Business Insights
 
-The project demonstrates experience with:
+## The project demonstrates experience with:
 
 Translating business questions into analytical requirements
 Identifying relevant data sources
@@ -254,7 +254,7 @@ Interpreting analytical results
 Communicating findings through reports and dashboards
 Future Improvements
 
-Potential improvements include:
+## Potential improvements include:
 
 Using larger and more representative datasets
 Adding more advanced statistical analysis
