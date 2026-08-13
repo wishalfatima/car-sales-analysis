@@ -196,7 +196,6 @@ These issues required additional cleaning, standardisation, and transformation b
 
 ## Repository Structure
 
-```text
 car-sales-analysis/
 │
 ├── car_sales_data_processing.ipynb
