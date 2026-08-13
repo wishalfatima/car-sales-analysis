@@ -196,16 +196,31 @@ These issues required additional cleaning, standardisation, and transformation b
 
 ## Repository Structure
 
+## Repository Structure
+
+```text
 car-sales-analysis/
 │
-├── car_sales_data_processing.ipynb
+├── Data Processing for Tableau Using Python.ipynb
+│   └── Python-based data cleaning and transformation workflow
+│
 ├── car_sales_df.csv
+│   └── Car sales dataset
+│
 ├── gcar_data_df.csv
+│   └── German car dataset
+│
 ├── ERD.jpg
-├── star_schema.png
-├── car_sales_analysis_report.pdf
+│   └── Entity Relationship Diagram
+│
+├── Star Schema-Final.png
+│   └── Star schema used for BI analysis
+│
+├── Report Car Analysis.pdf
+│   └── Project analysis report
+│
 └── README.md
-
+    └── Project documentation
 
 ## Reproducibility
 
