@@ -101,7 +101,7 @@ The ERD represents relationships between the source entities, including:
 - Color
 - Fuel
 
-![Entity Relationship Diagram](ERD.png)
+![Entity Relationship Diagram](erd.png)
 
 ### Star Schema
 
