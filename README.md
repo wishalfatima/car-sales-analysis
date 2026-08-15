@@ -155,7 +155,7 @@ The model considers entities and attributes related to:
 
 The ERD was used as the foundation for understanding relationships before developing the BI model.
 
-![Entity Relationship Diagram](ERD.jpg)
+![Entity Relationship Diagram](erd.png)
 
 ### Star Schema
 
@@ -175,7 +175,7 @@ The model includes dimensions such as:
 - `Dimension_Mileage`
 - `Dimension_Yearly_Resale_Value`
 
-![Star Schema](Star%20Schema-Final.png)
+![Star Schema](star_schema.png)
 
 ---
 
