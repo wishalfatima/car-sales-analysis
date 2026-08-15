@@ -1,119 +1,173 @@
+
 # Car Sales Analysis
 
-A Business Intelligence and data analysis project exploring car sales, pricing, fuel efficiency, engine performance, and vehicle resale values using **Python, Pandas, Jupyter Notebook, and Tableau**.
+Business Intelligence analysis of car sales and vehicle attributes using Python, Pandas, Jupyter Notebook, data modelling, and Tableau.
 
 ## Project Overview
 
-This project analyses two car-related datasets to identify patterns and relationships that can support business and sales decision-making.
+This project explores the **Retail / Automotive Sales domain** by combining two car-related datasets to investigate vehicle sales, pricing, fuel efficiency, engine characteristics, and resale value.
 
-The analysis focuses on questions around:
+The project follows a Business Intelligence workflow covering:
 
-- Car sales by brand and model
-- Vehicle pricing
-- Fuel efficiency
-- Engine power and performance
-- Mileage
-- Vehicle types
-- Resale values
+- Business question definition
+- Data understanding
+- Data transformation
+- Data integration
+- Data cleaning
+- Data modelling
+- Analytical exploration
+- Business intelligence visualization
+- Business-oriented interpretation of results
 
-The project combines **data cleaning, data integration, data modelling, exploratory analysis, and business intelligence visualisation**.
+The analysis was developed as part of a **Business Intelligence** academic project.
 
 ## Business Questions
 
-The analysis was designed around the following questions:
+The analysis focuses on five main questions:
 
-1. How do car sales vary across different brands or models?
-2. How does fuel efficiency vary across different car models?
-3. Which vehicle features have a stronger relationship with car sales?
-4. How does engine power relate to car price and mileage?
-5. Which vehicle types are associated with higher resale values?
+1. **How do car sales vary across different brands or models?**
 
-These questions were used to guide the data preparation, modelling, and visualisation process.
+2. **How does fuel efficiency relate to different car models?**
+
+3. **Which car features have the greatest relationship with car sales?**
+
+4. **How does engine power relate to car price and mileage?**
+
+5. **Which vehicle types are associated with higher resale values?**
+
+These questions were selected to support business decisions around pricing, sales strategy, customer preferences, manufacturing, marketing, inventory, and resale value. :contentReference[oaicite:4]{index=4} :contentReference[oaicite:5]{index=5}
+
+---
 
 ## Datasets
 
-Two datasets were used in the analysis:
+Two datasets were used in the analysis.
 
-| Dataset | Source | Size |
-|---|---|---:|
-| German Car Insights | Kaggle | ~100,000 entries, 15 columns |
-| Car Sales | Kaggle | 153 entries, 16 columns |
+### 1. German Car Insights
 
-The datasets contain information related to vehicle characteristics, pricing, sales, fuel information, mileage, and resale values.
+The German Car Insights dataset contains approximately **100,000 records and 15 columns**.
+
+It includes information such as:
+
+- Brand
+- Model
+- Color
+- Registration date
+- Year
+- Price
+- Power
+- Transmission type
+- Fuel consumption
+- Mileage
+- Offer description
+
+### 2. Car Sales
+
+The Car Sales dataset contains approximately **153 records and 16 columns**.
+
+It includes information such as:
+
+- Manufacturer
+- Model
+- Sales
+- Year resale value
+- Vehicle type
+- Price
+- Engine size
+- Horsepower
+- Wheelbase
+- Vehicle dimensions
+- Fuel information
+- Launch date
+
+The datasets were selected to provide complementary information about vehicle characteristics, sales, pricing, and resale value. :contentReference[oaicite:6]{index=6}
+
+---
 
 ## Data Processing
 
+Data preparation was performed using **Python, Pandas, and Jupyter Notebook**.
+
+The processing workflow consisted of three main stages:
+
 ### Data Transformation
 
-The datasets were prepared for analysis using Python and Pandas.
-
-The preparation process included:
-
-- Loading CSV datasets into Jupyter Notebook
-- Identifying relevant attributes
-- Removing irrelevant fields
-- Identifying primary and foreign key relationships
-- Standardising manufacturer and model names
-- Preparing data for integration with Tableau
-
-Examples of removed or simplified attributes include:
-
-- `Unnamed: 0`
-- `Latest Launch`
-- `Simplified Model`
+- Loaded the datasets from CSV files
+- Identified primary keys
+- Established relationships using foreign keys
+- Loaded the datasets into Pandas DataFrames
+- Inspected the structure and initial records
+- Removed irrelevant attributes
+- Removed unnecessary columns such as `Unnamed: 0`
+- Removed attributes such as `Latest Launch` and `Simplified Model` where appropriate
 
 ### Data Integration
 
-The datasets were integrated using relationships between relevant vehicle attributes.
+The datasets were integrated to support the BI data model.
 
-An inner join was used to remove non-matching records.
+Key steps included:
 
-The integrated data was organised into analytical dimensions including:
+- Comparing manufacturer and model values across datasets
+- Standardizing model naming where necessary
+- Using inner joins to reduce non-matching records
+- Recreating dimension data from the merged dataset
+- Creating additional dimension tables
+- Preparing data for Tableau analysis
 
-- Dimension_Car
-- Dimension_Date
-- Dimension_Fuel
-- Dimension_Mileage
-- Dimension_Yearly_Resale_Value
+The resulting model included dimensions such as:
+
+- `Dimension_Car`
+- `Dimension_Date`
+- `Dimension_Fuel`
 
 ### Data Cleaning
 
-The data cleaning process included:
+The datasets contained missing values and inconsistent data types.
+
+Cleaning included:
 
 - Identifying missing values
-- Handling missing numerical values using median values
-- Handling missing categorical values using mode values
-- Converting numeric fields stored as strings
-- Removing non-numeric characters from power-related fields
-- Converting `power_kw` and `power_ps` into numeric formats
-- Standardising inconsistent values across datasets
+- Filling missing numerical values using the median
+- Filling missing categorical values such as color using the mode
+- Converting `power_kw` and `power_ps` into numeric values
+- Cleaning and converting `price_in_euro` into numeric format
+- Handling values affected by conversion errors
+
+These steps prepared the datasets for analysis and visualization. :contentReference[oaicite:7]{index=7} :contentReference[oaicite:8]{index=8}
+
+---
 
 ## Data Modelling
 
-Two complementary models were created to understand and prepare the data for analysis.
+Two modelling approaches were used.
 
 ### Entity Relationship Diagram
 
-The ERD represents relationships between the source entities, including:
+An ERD was developed to represent relationships within the source data.
 
-- Car
-- Manufacturer
-- Color
+The model considers entities and attributes related to:
+
+- Cars
+- Manufacturers
+- Models
+- Colors
 - Fuel
 
-![Entity Relationship Diagram](erd.png)
+The ERD was used as the foundation for understanding relationships before developing the BI model.
+
+![Entity Relationship Diagram](ERD.jpg)
 
 ### Star Schema
 
-A star schema was designed for Business Intelligence analysis.
+A dimensional model was designed for Business Intelligence analysis.
 
-The model contains:
+The central fact table is:
 
 **Fact Table**
 
 - `Car_Sales_Fact`
 
-**Dimensions**
+The model includes dimensions such as:
 
 - `Dimension_Car`
 - `Dimension_Date`
@@ -121,88 +175,109 @@ The model contains:
 - `Dimension_Mileage`
 - `Dimension_Yearly_Resale_Value`
 
-![Star Schema](star_schema.png)
+![Star Schema](Star%20Schema-Final.png)
 
-## Analytics & Visualisation
+---
 
-The prepared data was analysed and visualised using Tableau.
+## Analytics & Visualization
 
-### Analysis 1 — Sales by Brand / Model
+The prepared data was analysed using **Tableau**.
 
-A bar chart was used to compare car sales across different brands and models.
+The analysis focused on the five business questions defined at the beginning of the project.
 
-**Key finding:** Ford F-Series had the highest sales volume among the models analysed.
+Visual analysis included:
 
-### Analysis 2 — Price vs Fuel Efficiency
+- Car sales by brand/model
+- Car price and fuel efficiency relationships
+- Relationships between vehicle features and sales
+- Engine power compared with price and mileage
+- Vehicle type compared with yearly resale value
 
-A scatter plot was used to investigate the relationship between vehicle price and fuel efficiency.
+The Tableau analysis was used to transform the prepared datasets into business-oriented insights.
 
-**Key finding:** Higher-priced vehicles generally showed lower fuel efficiency in the analysed data.
-
-### Analysis 3 — Vehicle Features vs Sales
-
-Multiple vehicle characteristics were compared against sales, including:
-
-- Curb weight
-- Engine size
-- Horsepower
-
-This analysis was used to investigate which vehicle characteristics showed stronger relationships with sales.
-
-### Analysis 4 — Engine Power vs Price and Mileage
-
-Scatter plots were used to investigate relationships between engine power, vehicle price, and mileage.
-
-### Analysis 5 — Vehicle Type vs Resale Value
-
-Vehicle types were compared against yearly resale values to identify differences in resale performance.
-
-**Key finding:** Passenger vehicle types showed higher resale values than regular cars in the analysed dataset.
+---
 
 ## Key Findings
 
-The analysis identified several notable patterns:
+The analysis identified several important patterns:
 
-- Ford F-Series had the highest sales volume among the models analysed.
+- **Ford F-Series** showed the highest sales volume among the models examined.
 - Higher-priced vehicles generally showed lower fuel efficiency.
-- Engine size and horsepower showed notable relationships with sales across manufacturers.
-- Passenger vehicle types showed higher resale values than regular cars.
-- Data quality and consistency had a significant impact on the preparation process.
+- Vehicle characteristics such as engine size and horsepower showed relationships with sales across manufacturers.
+- Passenger vehicle types showed higher resale values in the analysed data.
 
-These findings are observations from the analysed datasets and should not be interpreted as universal market conclusions.
+These findings can support discussions around:
 
-## Challenges Encountered
+- Pricing strategy
+- Marketing strategy
+- Manufacturing decisions
+- Inventory management
+- Customer preferences
+- Sales planning
+- Resale value analysis
 
-Several data preparation challenges were identified:
+The project report specifically identifies manufacturing, marketing, pricing, inventory management, and sales forecasting as potential areas where the analysis could support decision-making. :contentReference[oaicite:9]{index=9}
+
+---
+
+## Challenges
+
+Several data quality and integration challenges were encountered:
 
 - A large number of missing values
-- Inconsistent data organisation
+- Inconsistent data organization
 - Numeric values stored as strings
-- Inconsistent manufacturer and model naming
-- Limited matching relationships between some primary and foreign key values
+- Difficulties establishing relationships between primary and foreign keys
+- Differences in manufacturer and model naming across datasets
 
-These issues required additional cleaning, standardisation, and transformation before the data could be used effectively for analysis.
+These challenges required additional data cleaning, transformation, and integration before the data could be used effectively for BI analysis. :contentReference[oaicite:10]{index=10}
+
+---
+
+## Business & Process Analysis Perspective
+
+Although this is a Business Intelligence project, it demonstrates several skills relevant to **Process Analyst, Business Analyst, and Data/BI Analyst roles**.
+
+The project demonstrates experience with:
+
+- Translating business questions into analytical requirements
+- Understanding a business domain
+- Identifying relevant business entities and relationships
+- Working with structured and semi-structured data
+- Data quality assessment
+- Data cleaning and transformation
+- Data integration
+- Entity Relationship modelling
+- Dimensional modelling
+- Designing a BI-oriented star schema
+- Turning data into business insights
+- Communicating findings to support decision-making
+
+The project therefore demonstrates not only technical data skills, but also the ability to move from **business questions → data → analysis → actionable insights**.
+
+---
 
 ## Tools & Technologies
 
 | Tool / Technology | Purpose |
 |---|---|
 | Python | Data processing and transformation |
-| Pandas | Data cleaning and manipulation |
+| Pandas | Data manipulation and cleaning |
 | Jupyter Notebook | Data preparation and analysis |
-| Tableau | Business intelligence and visualisation |
-| CSV | Dataset format |
-| PlantUML / ERD modelling | Data and system modelling |
+| Tableau | Business intelligence visualization |
+| CSV | Source and processed datasets |
+| ERD | Source data modelling |
+| Star Schema | BI dimensional modelling |
+
+---
 
 ## Repository Structure
 
-## Repository Structure
 
-```text
 car-sales-analysis/
 │
 ├── Data Processing for Tableau Using Python.ipynb
-│   └── Python-based data cleaning and transformation workflow
+│   └── Data transformation, integration, and cleaning workflow
 │
 ├── car_sales_df.csv
 │   └── Car sales dataset
@@ -214,71 +289,48 @@ car-sales-analysis/
 │   └── Entity Relationship Diagram
 │
 ├── Star Schema-Final.png
-│   └── Star schema used for BI analysis
-│
-├── Report Car Analysis.pdf
-│   └── Project analysis report
+│   └── BI star schema
 │
 └── README.md
     └── Project documentation
 
+---
+
 ## Reproducibility
 
-The main data preparation workflow is documented in:
+The main data preparation workflow is available in:
 
-car_sales_data_processing.ipynb
+`Data Processing for Tableau Using Python.ipynb`
 
-The notebook demonstrates the data preparation and transformation steps used before the data was analysed and visualised.
+The notebook documents the major data transformation, integration, and cleaning steps performed before the BI analysis.
 
-The processed datasets are included in the repository for reference.
+The CSV files included in the repository provide the datasets used during the project workflow.
 
-Business & Process Analysis Perspective
+---
 
-This project also demonstrates skills relevant to Process Analyst and Business Analyst roles.
+## Future Improvements
 
-The analysis followed a structured process:
+Possible improvements include:
 
-Business Questions
-        ↓
-Data Collection
-        ↓
-Data Understanding
-        ↓
-Data Cleaning
-        ↓
-Data Integration
-        ↓
-Data Modelling
-        ↓
-Analysis
-        ↓
-Visualisation
-        ↓
-Business Insights
+* Use larger and more recent datasets
+* Improve the consistency of relationships between datasets
+* Perform additional statistical analysis
+* Investigate predictive modelling for sales forecasting
+* Add more interactive Tableau dashboards
+* Validate findings with automotive domain experts
+* Incorporate additional business and market variables
+* Extend the analysis to support more detailed forecasting and decision-making
 
-## The project demonstrates experience with:
+The project report also identifies larger datasets and domain-expert validation as areas for future improvement. 
 
-Translating business questions into analytical requirements
-Identifying relevant data sources
-Understanding data quality issues
-Cleaning and standardising business data
-Integrating multiple datasets
-Modelling data for BI analysis
-Selecting appropriate visualisations
-Interpreting analytical results
-Communicating findings through reports and dashboards
-Future Improvements
+---
 
-## Potential improvements include:
+## Project Context
 
-Using larger and more representative datasets
-Adding more advanced statistical analysis
-Investigating correlations between additional vehicle characteristics
-Adding interactive Tableau dashboards
-Introducing automated data-quality checks
-Adding more detailed business recommendations
-Validating findings with domain experts
-Extending the analysis with predictive modelling
-Project Status
+This project was completed as part of an academic **Business Intelligence** assignment.
 
-Completed academic/portfolio Business Intelligence and data analysis project demonstrating data preparation, integration, modelling, visualisation, and business insight generation.
+The work covered data research, analytical question development, data modelling, Jupyter/Pandas processing, Tableau analysis, and reporting. 
+
+
+
+
